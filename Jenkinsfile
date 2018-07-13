@@ -3,8 +3,7 @@ pipeline {
     docker {
       image 'node:6-alpine'
       args '''-p 3000:3000
--e "http_proxy=http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80"
--e "https_proxy=http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80"'''
+-e "http_proxy=http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80"'''
     }
 
   }
@@ -14,5 +13,8 @@ pipeline {
         sh 'npm install'
       }
     }
+  }
+  environment {
+    https_proxy = 'http://PITC-Zscaler-AmericasZ.proxy.corporate.ge.com:80'
   }
 }
